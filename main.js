@@ -138,16 +138,17 @@ switch (flag) {
             let nameOfQuestion= document.getElementsByName("inteligentRace");
                 for (let i=0; i<nameOfQuestion.length;i++){
 
-    if (nameOfQuestion[i] ==answersQuiz[nameOfQuestion]){
+    if (nameOfQuestion[i] ==answersQuiz["inteligentRace"]){
 
 
-    nameOfQuestion.classList.add("success");
-    numberFail+=1;
+    nameOfQuestion[i].classList.add("success");
+    numberSuccess+=1;
 
 }else{
-nameOfQuestion.classList.add("fail");
+nameOfQuestion[i].classList.add("fail");
+numberFail+=1;
 console.log("la respuesta "+answer+ " es incorrecta");
-numberSuccess+=1;
+
 
 }
 
