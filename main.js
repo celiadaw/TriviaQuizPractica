@@ -48,25 +48,25 @@ function trueOrFalse (answer, anwersQuiz){
 let numberFail=0;
 let numberSuccess=0;
 
-for( let property in anwersQuiz ){
-        console.log("answer "+answer);
-        console.log("answerQuiz array obj "+anwersQuiz[property]);
-        if (answer == anwersQuiz[property]){
-            console.log("la respuesta "+answer+ " es correcta");
-            answer.classList.add("success");
-            numberFail+=1;
+// for( let property in anwersQuiz ){
+//         console.log("answer "+answer);
+//         console.log("answerQuiz array obj "+anwersQuiz[property]);
+//         if (answer == anwersQuiz[property]){
+//             console.log("la respuesta "+answer+ " es correcta");
+//             answer.classList.add("success");
+//             numberFail+=1;
     
-    }else{
-        answer.classList.add("fail");
-        console.log("la respuesta "+answer+ " es incorrecta");
-        numberSuccess+=1;
+//     }else{
+//         answer.classList.add("fail");
+//         console.log("la respuesta "+answer+ " es incorrecta");
+//         numberSuccess+=1;
     
-    }
-      }
+//     }
+//       }
   
         
 
-}
+// }
 
 
 
@@ -121,25 +121,62 @@ if(validation){
 
 }
 
+nameOfQuestion.addEventListener(click, comprobar)
 
-flag =0;
 
-switch (answer.addEventListener(click,trueOrFalse)) {
+// answers =document.getElementsByName("inteligentRace")
+// .addEventListener("click",trueOrFalse);
+// console.log (answers)
+
+flag =1;
+function comprobar() {
+    
+
+switch (flag) {
     case 1:
-        let answers =document.getElementsByName("inteligentRace");
-        console.log(answers);
-        //de aqui sacamos el elemento 1 de ese  nodeList
-        compruebaOpcion() == answresSelect
-        answerSelect =answers.item().value;
-        console.log (answers.item(1).value);
-        break;
+      //falta coger el valor del name en relación al array de respuestas y el click añadiendole uno cada vez
+            let nameOfQuestion= document.getElementsByName("inteligentRace");
+                for (let i=0; i<nameOfQuestion.length;i++){
 
-    default:
-        break;
+    if (nameOfQuestion[i] ==answersQuiz[nameOfQuestion]){
+
+
+    nameOfQuestion.classList.add("success");
+    numberFail+=1;
+
+}else{
+nameOfQuestion.classList.add("fail");
+console.log("la respuesta "+answer+ " es incorrecta");
+numberSuccess+=1;
+
 }
 
-//para saber lo primero donde estamos, primera pregunta etc, tendremos que hacer una bandera 
-// que nos cuente las veces que se le dieron click Ç(y controlar las veces que se han dado correctamente primero, esto es , siempre y cuando se le de a  una opcion falta o verdadera y se marque se añade un incremento al iterador bandera, para saber si estamos en la pregunta 1 o en la 5)
-//si la bandera esta en la numero 1 tendremos que comparar el name con el primer elemento de answerquiz
-// y si el valor de la opcion seleccionada es igual al valor del primer elemento de answerquiz se pone en verde y si es otro se pone en rojo
 
+                }
+                flag++;
+        break;
+        case 2:
+            //falta coger el valor del name en relación al array de respuestas y el click añadiendole uno cada vez
+                   nameOfQuestion= document.getElementsByName("dangerousRace");
+                      for (let i=0; i<nameOfQuestion.length;i++){
+      
+          if (nameOfQuestion[i] ==answersQuiz[nameOfQuestion]){
+      
+      
+          nameOfQuestion.classList.add("success");
+          numberFail+=1;
+      
+      }else{
+      nameOfQuestion.classList.add("fail");
+      console.log("la respuesta "+answer+ " es incorrecta");
+      numberSuccess+=1;
+      
+      }
+      
+      
+                      }
+              break;
+
+
+};
+}}
