@@ -1,0 +1,237 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+
+
+/* main{
+
+  width: 100%;
+  display: flex;
+}*/
+
+section{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+} 
+article{
+  width: 100%;
+ display:flex;
+ justify-content: space-between;
+ flex-direction: column;
+} 
+
+div{
+  width: 100%;
+ display:flex;
+ flex-direction: column;
+}
+
+
+
+/* MOBILE  */
+
+.wrapper {
+ 
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+    flex-direction: column;
+    background-image: url(asset/img/paws.jpg);
+  background-size: 50% ;
+}
+
+/* DEFINICIÓN DE CAJAS
+section{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+} 
+article{
+ display:flex;
+ justify-content: space-between;
+ flex-direction: column;
+ width: 90%;
+ align-content: center;
+} 
+
+div{
+ display:flex;
+ flex-direction: column;
+} */
+
+
+ .fieldsetStyle{
+  position: relative;
+  padding :0;
+  border: none;
+  
+  display: flex;
+  align-content: space-around;
+
+
+
+
+} 
+
+h2 {
+    background: rgb(12, 12, 12);
+    
+    color:rgb(245, 239, 239);
+    text-align: start;
+    
+    font-size: 1,2em;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    text-align: center;
+
+}
+
+
+
+[type="radio"]{
+  display:none;
+}
+
+
+
+
+
+.cajaPreguntas {
+    	position:relative;
+    
+        display: flex;
+     
+
+       background-image: url("asset/img/dogInteligent.jpg");
+       background-repeat: round;     
+             
+          
+  align-content: space-around;
+        text-align: center;
+      
+        height: 200px;
+   
+        flex-direction: row;
+      flex-wrap: wrap;
+
+}
+
+
+
+
+
+.divAnswer {
+  display: flex;
+  position: relative;
+
+  align-items: center;
+  width: 100%;
+ 
+  position: relative;
+  color:rgb(253, 242, 242);
+  font-family: fantasy;
+
+ 
+  height:10%;
+  width: 100%;
+  background-color: rgb(5, 2, 1);
+
+} 
+
+ .hidden{
+
+  display: none;
+} 
+
+ /* TABLET +760PX  */
+
+@media screen and (min-width:761px){
+    .wrapper{
+     
+      width: 760px;
+            
+    }
+
+    section{
+      position: relative;
+      display:flex;
+      flex-direction: column;
+      width: 100%
+     
+    } 
+    .cajaPreguntas {
+      display:flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+
+   
+}
+
+
+
+.divAnswer {
+  display: flex;
+  position: relative;
+
+  align-items: flex-start;
+  width: 50%;
+ 
+  position: relative;
+  color:rgb(253, 242, 242);
+  font-family: fantasy;
+
+ 
+  height:30%;
+  width: 50%;
+  background-color: rgb(5, 2, 1);
+
+} 
+
+
+
+
+
+}
+
+
+
+
+
+/* DESKTOP VERSION   961 o +*/
+
+@media screen and (min-width:961px){
+    .wrapper{
+      
+      width: 960px;
+     
+     
+      
+    }
+} 
+
+
+
+
+
+
+/* estilos para cambiar de color cuando acierten o fallen */
+
+.success {
+
+  background-color: rgb(31, 238, 24);
+}
+
+
+.fail {
+
+  background-color: rgb(245, 12, 12);
+}
