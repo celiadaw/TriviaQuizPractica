@@ -92,23 +92,50 @@ function sendAnswers(){
 
 
 //el usuario puede hacer click en cualquiera de las 4 opciones ... entonces no se que elemento tengo que recoger exactamente 
-let answers =document.getElementsByTagName("input");
 
-let answer = document.getElementById();
-console.log(answer);
-answer.addEventListener(click,trueOrFalse);
+//esto crea una NodeList con el label y el resto de opciones  de 0 a 5;
+let answers =document.getElementsByName("inteligentRace");
+console.log(answers);
+//de aqui sacamos el elemento 1 de ese  nodeList
+answerSelect =answers.item(1).value;
+console.log (answers.item(1).value);
 
 
 
 
-let nameOfQuestion = Object.getOwnPropertyNames(answersQuiz[0]);
+// answer.addEventListener(click,trueOrFalse);
+
+function compruebaOpcion (){
+let nameOfQuestion =0;
+for(let i=0; i<answersQuiz.length;i++){
+nameOfQuestion = Object.getOwnPropertyNames(answersQuiz[i]);
 console.log (nameOfQuestion);
+}
+return nameOfQuestion;
+}
 if(validation){
 // si se  ha seleccionado una respuesta, queremos ir a la pregunta siguiente
 
 
 
 
+}
+
+
+flag =0;
+
+switch (answer.addEventListener(click,trueOrFalse)) {
+    case 1:
+        let answers =document.getElementsByName("inteligentRace");
+        console.log(answers);
+        //de aqui sacamos el elemento 1 de ese  nodeList
+        compruebaOpcion() == answresSelect
+        answerSelect =answers.item().value;
+        console.log (answers.item(1).value);
+        break;
+
+    default:
+        break;
 }
 
 //para saber lo primero donde estamos, primera pregunta etc, tendremos que hacer una bandera 
