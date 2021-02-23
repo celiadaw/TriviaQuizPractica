@@ -64,8 +64,9 @@ const answersQuiz =
                 console.log(inputAnswer[i]);
                 if(inputAnswer[i].checked==true){
                     console.log("este es el valor "+inputAnswer[i].value);
-                    console.log("este es el name "+inputAnswer[i].name);      let answer=inputAnswer[i];
-                            let nameQuiz= answer.name;
+                    console.log("este es el name "+inputAnswer[i].name);      
+                    let answer=inputAnswer[i];
+                            let nameQuiz=inputAnswer[i].name;
                         console.log("esta es la variable answer "+answer);
                         console.log(answer);
                             comprobar(answer, nameQuiz);
@@ -85,15 +86,19 @@ const answersQuiz =
     function comprobar(answer, nameQuiz) {
         console.log(answersQuiz.inteligentRace + "esta es la respuesta de respuestas");
         console.log(nameQuiz);
-        if(answer.value ==answersQuiz.nameQuiz){
+        if(answer.value ==answersQuiz[nameQuiz]){
             console.log("en comprobar si son iguales "+answer.value);
-           console.log(answersQuiz.nameQuiz);
+           console.log(answersQuiz[nameQuiz]);
          
            trueAddColor(answer);
+
      }else{
+
+
+
         falseAddColor(answer);
         console.log("en comprobar si son diferentes "+answer.value);
-        console.log(answersQuiz.nameQuiz);
+        console.log(answersQuiz[nameQuiz]);
          console.log("no es la respuesta");
      }
      
