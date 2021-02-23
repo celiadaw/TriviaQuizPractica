@@ -41,7 +41,7 @@ div{
   display: flex;
   align-items: center;
     flex-direction: column;
-     background-image: url(asset/img/paws.jpg); 
+     background-image: url(img/paws.jpg); 
 
 
 }
@@ -111,7 +111,7 @@ h2 {
         display: flex;
      
 
-       background-image: url("asset/img/dogInteligent.jpg");
+       background-image: url(img/dogInteligent.jpg);
        background-repeat: round;     
              
           
@@ -229,7 +229,7 @@ h2 {
       font-size: 5em;
     }
     .cajaPreguntas{
-       background-image: url(asset/img/borderCollie.jpg);
+       background-image: url(img/dogs.png);
        background-color: beige;
        background-size: cover;
        height: 800px;
