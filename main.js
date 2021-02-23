@@ -38,15 +38,15 @@
 
 
 const answersQuiz = 
-    [
+    {
       
-      {  inteligentRace: "borderCollie"},
-       {dangerousRace: "borderCollie"},
-        {bigRace: "borderCollie"},
-        {smallRace: "borderCollie"},
-        {ancientRace: "basenji"}
+        inteligentRace: "borderCollie",
+       dangerousRace: "borderCollie",
+        bigRace: "borderCollie",
+        smallRace: "borderCollie",
+        ancientRace: "basenji"
 
-    ];
+    };
 
     let numberFail=0;
     let numberSuccess=0;
@@ -62,9 +62,14 @@ const answersQuiz =
                 console.log(inputAnswer[i]);
                 if(inputAnswer[i].checked==true){
                     console.log("este es el valor "+inputAnswer[i].value);
-                    console.log("este es el name "+inputAnswer[i].name);      
-                            comprobar(inputAnswer[i].name);
+                    console.log("este es el name "+inputAnswer[i].name);      let answer=inputAnswer[i];
+                            let nameQuiz= answer.name;
+                        console.log("esta es la variable answer "+answer);
+                        console.log(answer);
+                            comprobar(answer, nameQuiz);
                 }else{
+
+                    //esto no hace nada.... ¿?¿? 
                     alert("tienes que escoger una opción");
                 }
             
@@ -75,9 +80,48 @@ const answersQuiz =
     }
 
    
+    function comprobar(answer, nameQuiz) {
+        console.log(answersQuiz.inteligentRace + "esta es la respuesta de respuestas");
+        console.log(nameQuiz);
+        if(answer.value ==answersQuiz.nameQuiz){
+            console.log("en comprobar si son iguales "+answer.value);
+           console.log(answersQuiz.nameQuiz);
+         
+           trueAddColor(answer);
+     }else{
+        falseAddColor(answer);
+        console.log("en comprobar si son diferentes "+answer.value);
+        console.log(answersQuiz.nameQuiz);
+         console.log("no es la respuesta");
+     }
+     
+    
+    }
+    
+
+    function validation (answer){
+        if(answer ==null){
+    
+            alert ("Selecciona una respuesta");
+                return false;
+        }
+        return true;
+    
+    
+    } 
+function trueAddColor (answer){
+  answer.classList.add("success");
+   numberSuccess+=1;
 
 
 
+};
+function falseAddColor (answer){
+    answer.classList.add("fail");
+   numberFail+=1;
+  
+  
+  }
 
     // let  answer= document.getElementsByName("inteligentRace");
     // // document.getSelection()
@@ -110,17 +154,6 @@ const answersQuiz =
 //    let envioDatos = document.getSelection(submiT).addEventListener("")
 // console.log(answer);
 
-function comprobar() {
-    if(this.value ==answersQuiz.name){
-       
-        console.log (this.value);
- 
- }else{
-     console.log("no es la respuesta");
- }
- 
-
-}
 
 
 // const answer = document.getAtrribute ("value").value;
@@ -134,20 +167,9 @@ function comprobar() {
 //tene
 //--------------------------funciones----------------------------------
 
-function validation (answer){
-    if(answer ==null){
-
-        alert ("Selecciona una respuesta");
-            return false;
-    }
-    return true;
-
-
-}
 
 function trueOrFalse (answer, anwersQuiz){
-//recorremos el objeto para comparar la respuesta que han pulsado con la de nuestro objeto
-//si coincide se pone en verde si no en rojo
+
     validation();
 }
 
