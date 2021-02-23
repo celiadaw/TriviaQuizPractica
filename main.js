@@ -1,39 +1,39 @@
 //-----------------variables y constantes--------------
 
-const QuizDogs =[
-    inteligentRace[
+// const QuizDogs =[
+//     inteligentRace[
     
-    {   question : " Qué raza de perro es considerada más inteligente?  ",
+//     {   question : " Qué raza de perro es considerada más inteligente?  ",
 
-        answer1: {   label: "borderCollie",
-                id: "borderCollie",
-            name: "inteligentRace",
-            value: "borderCollie"
-                    },
+//         answer1: {   label: "borderCollie",
+//                 id: "borderCollie",
+//             name: "inteligentRace",
+//             value: "borderCollie"
+//                     },
 
-       answer2: {   label: "pastorAleman",
-                    id: "pastorAleman",
-                name: "inteligentRace",
-                value: "pastorAleman"
-                        } ,           
+//        answer2: {   label: "pastorAleman",
+//                     id: "pastorAleman",
+//                 name: "inteligentRace",
+//                 value: "pastorAleman"
+//                         } ,           
 
-       answer3: {   label: "Rottweiler",
-                   id: "Rottweiler",
-                  name: "inteligentRace",
-                    value:"Rottweiler"
-                        } ,     
-     answer4: {   label: "pastor-belga",
-                    id: "pastor-belga",
-                    name: "inteligentRace",
-                    value:"pastor-belga"
-                           } ,           
-
-
-
-    }],
+//        answer3: {   label: "Rottweiler",
+//                    id: "Rottweiler",
+//                   name: "inteligentRace",
+//                     value:"Rottweiler"
+//                         } ,     
+//      answer4: {   label: "pastor-belga",
+//                     id: "pastor-belga",
+//                     name: "inteligentRace",
+//                     value:"pastor-belga"
+//                            } ,           
 
 
-]
+
+//     }],
+
+
+// ]
 
 
 
@@ -51,42 +51,67 @@ const answersQuiz =
     let numberFail=0;
     let numberSuccess=0;
 
+ let inputAnswer = document.getElementsByTagName('input'); 
+
+
+    for(let i=0; i<inputAnswer.length;i++) {
+
+    if (inputAnswer[i].type == 'radio') {
+        inputAnswer[i].addEventListener("click",  () =>{
+            console.log(inputAnswer[i]+"pasa");
+                console.log(inputAnswer[i]);
+                if(inputAnswer[i].checked==true){
+                    console.log("este es el valor "+inputAnswer[i].value);
+                    console.log("este es el name "+inputAnswer[i].name);      
+                            comprobar(inputAnswer[i].name);
+                }else{
+                    alert("tienes que escoger una opción");
+                }
+            
+        
+            });
+        
+        }
+    }
+
+   
 
 
 
-    let  answer= document.getElementsByName("inteligentRace");
-    // document.getSelection()
-    console.log(answer);
-    Array.from(answer);
 
-   let enviar= document.addEventListener("submit", compruebaSihayDatos());
+    // let  answer= document.getElementsByName("inteligentRace");
+    // // document.getSelection()
+    // console.log(answer);
+    // Array.from(answer);
+
+//    let enviar= document.addEventListener("submit", compruebaSihayDatos());
 // answer.addEventListener("click", comprobar()); 
 
 
-function compruebaSihayDatos() {
+// function compruebaSihayDatos() {
     
 
-for(let i=1; i<answer.lenght; i++ ){
-    console.log(answer[i]);
-   answer[i].addEventListener("click", () =>{
-    console.log(answer[i]);
-        console.log(answer[i]);
-        if(answer[i].checked==true){
-                    comprobar();
-        }else{
-            alert("tienes que escoger una opción");
-        }
+// for(let i=1; i<answer.lenght; i++ ){
+//     console.log(answer[i]);
+//    answer[i].addEventListener("click", () =>{
+//     console.log(answer[i]);
+//         console.log(answer[i]);
+//         if(answer[i].checked==true){
+//                     comprobar();
+//         }else{
+//             alert("tienes que escoger una opción");
+//         }
     
 
-    });
+//     });
 
-}
-}
+// }
+// }
 //    let envioDatos = document.getSelection(submiT).addEventListener("")
-console.log(answer);
+// console.log(answer);
 
 function comprobar() {
-    if(this.value ==answersQuiz.inteligentRace){
+    if(this.value ==answersQuiz.name){
        
         console.log (this.value);
  
