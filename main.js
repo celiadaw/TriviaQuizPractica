@@ -1,5 +1,39 @@
 //-----------------variables y constantes--------------
 
+const QuizDogs =[
+    inteligentRace[
+    
+    {   question : " Qué raza de perro es considerada más inteligente?  ",
+
+        answer1: {   label: "borderCollie",
+                id: "borderCollie",
+            name: "inteligentRace",
+            value: "borderCollie"
+                    },
+
+       answer2: {   label: "pastorAleman",
+                    id: "pastorAleman",
+                name: "inteligentRace",
+                value: "pastorAleman"
+                        } ,           
+
+       answer3: {   label: "Rottweiler",
+                   id: "Rottweiler",
+                  name: "inteligentRace",
+                    value:"Rottweiler"
+                        } ,     
+     answer4: {   label: "pastor-belga",
+                    id: "pastor-belga",
+                    name: "inteligentRace",
+                    value:"pastor-belga"
+                           } ,           
+
+
+
+    }],
+
+
+]
 
 
 
@@ -16,16 +50,19 @@ const answersQuiz =
 
     let numberFail=0;
     let numberSuccess=0;
-    let answer;
 
 
 
-    answer= document.getElementsByName("inteligentRace");
+
+    let  answer= document.getElementsByName("inteligentRace");
     // document.getSelection()
     console.log(answer);
     Array.from(answer);
+
    let enviar= document.addEventListener("submit", compruebaSihayDatos());
 // answer.addEventListener("click", comprobar()); 
+
+
 function compruebaSihayDatos() {
     
 
@@ -88,7 +125,7 @@ function trueOrFalse (answer, anwersQuiz){
 //si coincide se pone en verde si no en rojo
     validation();
 }
-//con estas dos variables contamos el numero de fallos y aciertos que tiene
+
 
 
 // for( let property in anwersQuiz ){
