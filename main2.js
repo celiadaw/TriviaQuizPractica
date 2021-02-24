@@ -30,30 +30,6 @@ const divAnswers =document.querySelector(".answers");
 let flag= 0;
 let aciertos=0;
 
-   function crearTodasLasRespuestas(pregunta) {
-  
- let divAllAnswers = document.createElement("div");
-    divAllAnswers.setAttribute("id", "divAllAnswers");
-
-
-                console.log(quizDogs[0].answers.length);
-            let arrayAnswersOfaQuestion = [];
-            // console.log(quizanswers.length);
-                for(let i=0;i<pregunta.length;i++){
-                        console.log("preguntas.answer "+i);
-                        console.log("esto "+pregunta.answer[i]);
-                        divAllAnswers.appendChild(crearRespuesta(pregunta[i]));
-
-                        return divAllAnswers;
-                
-                    }
-                
-   
-}
-   
-   
-   
-
 
 function imprimir (questions){
  //crear pregunta
@@ -69,7 +45,7 @@ function imprimir (questions){
       let input = document.createElement("input");
       input.setAttribute("id", i);
       input.setAttribute("type", "radio");
-      input.setAttribute("name", i);
+      input.setAttribute("name", "answer");
       input.setAttribute("value", i);
     divAnswers.appendChild(input);
     arrayDelete.push(input);
@@ -79,8 +55,7 @@ function imprimir (questions){
  
     let textoLabel=document.createTextNode(arrayAllAnswers[i]);
     label.appendChild(textoLabel);
-    divAnswers.appendChild(label);
-    arrayDelete.push(label);
+   
     //añadimos un evento!
     label.addEventListener("click",
     () => {
@@ -88,7 +63,8 @@ function imprimir (questions){
 
   })
  
-       
+  divAnswers.appendChild(label);
+  arrayDelete.push(label);
    }
    
 
@@ -101,7 +77,7 @@ function  comprueba (answerTrue, answer, label, arrayDelete) {
         flag++;
         aciertos++;
         setTimeout(() => deleteQuestion  (arrayDelete), 3000) ;
-        if (flag < quizDogs){
+        if (flag < quizDogs.lenght){
             setTimeout(() => imprimir(quizDogs[flag]),3500);
           } else{
                 console.log("Este es tu resultado: " +aciertos+"/"+quizDogs.lenght);
