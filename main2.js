@@ -1,105 +1,171 @@
-
 const quizDogs = [
     { 
-
-            title : "¿Cuál es la raza más inteligente?",
-            answers: ["Border Collie", "Pastor Alemán", "Dogo Argentino", "Pastor Belga" ],
-
-            true : 0
-
-     },
-
+    
+    title : "¿Cuál es la raza más inteligente?",
+    answers: [  "border-collie", "pastor-aleman",  "dogo-argentino","pastor-belga" ],
+    answerTrue : "border-collie"
+    },
+    
     { 
-            
-        title : "¿Cuál es la raza más peligrosa?",
-        answers: [ "Presa Canario", "Rottweiler", "Pitbull", "American Staffordshire Terrier"     
-                        ],
-        true : 2
-
+                
+    title : "¿Cuál es la raza más peligrosa?",
+    answers: [  "presa-canario", "rottweiler","pitbull", "american-staffordshire"  ],
+   
+    answerTrue : "pitbull"
+    
     },
 
-
-
-];
-
-
-
-
-const divQuestion =document.querySelector(".question");
-const divAnswers =document.querySelector(".answers");
-let flag= 0;
-let aciertos=0;
-
-
-function imprimir (questions){
- //crear pregunta
- let arrayDelete= [];
-    let parrafo= document.createElement("p");
-    let textoParrafo = document.createTextNode(questions.title);
-    parrafo.appendChild(textoParrafo);
-     divQuestion.appendChild(parrafo);
-    arrayDelete.push(parrafo);
-   //crear Input
-   let arrayAllAnswers = questions.answers;
-   for (let i = 0; i < arrayAllAnswers.length; i++) {
-      let input = document.createElement("input");
-      input.setAttribute("id", i);
-      input.setAttribute("type", "radio");
-      input.setAttribute("name", "answer");
-      input.setAttribute("value", i);
-    divAnswers.appendChild(input);
-    arrayDelete.push(input);
-  //Crear label
-    let label =document.createElement("label");
-    label.setAttribute("for" , i );
- 
-    let textoLabel=document.createTextNode(arrayAllAnswers[i]);
-    label.appendChild(textoLabel);
+    {
+    title : "¿Cuál es la raza más grande?",
+    answers: [  "dogo-argentino", "rottweiler","pitbull", "boxer"  ],
    
-    //añadimos un evento!
-    label.addEventListener("click",
-    () => {
-        comprueba (answerTrue, i, label, arrayDelete)
+    answerTrue : "dogo-argentino"
+    
+    },
 
-  })
- 
-  divAnswers.appendChild(label);
-  arrayDelete.push(label);
-   }
+    {
+        title : "¿Cuál es la raza más pequeña?",
+        answers: [  "dogo-argentino", "dalmata","pequines", "boxer"  ],
+       
+        answerTrue : "pequines"
+        
+        },
+
+        {
+            title : "¿Cuál es la raza más antigua?",
+            answers: [  "dogo-argentino", "basenji","pequines", "boxer"  ],
+           
+            answerTrue : "basenji"
+            
+            }
+    
+    ];
+    
+
+  const divContenedor = document.getElementById("quiz");
+ let flag=0;
    
+       function imprimirPregunta(pregunta) {
+   
+            divContenedor.appendChild(crearTitulo(pregunta));
+            console.log(crearTitulo(pregunta))
 
-   imprimir(quizDogs[flag]);
+        divContenedor.appendChild(crearTodasLasRespuestas(pregunta.answers));
+    
+           }
 
-//función para comprobar
-function  comprueba (answerTrue, answer, label, arrayDelete) {
+       function crearTodasLasRespuestas(pregunta) {
+      
+     let divAllAnswers = document.createElement("div");
+        divAllAnswers.setAttribute("id", "divAllAnswers");
+    
+                    for(let i=0;i<pregunta.length;i++){
+                     console.log(pregunta[i]);
+          divAllAnswers.appendChild(crearRespuesta(pregunta[i]));
+    
+                           
+                    
+                        }
+                        
+                        return divAllAnswers;
+       
+    }
+
+       function crearTitulo(pregunta) {
+       
+       let parrafo= document.createElement("p");
+           let titulo = document.createTextNode(pregunta.title);
+           parrafo.appendChild(titulo);
+       
+           return parrafo;
+       }   
+     
+       function crearRespuesta(answerOfaQuestion) {
+    
+           let divCajaAnswer = document.createElement("div");
+        
+           divCajaAnswer.setAttribute("id", answerOfaQuestion);
+        
+          //con esta función añadimos a un div llamado CajaAnswer un label con su input correspondiente
+                   
+               let nuevaLabel =crearLabel(answerOfaQuestion);
+               let nuevoInput = crearInput(answerOfaQuestion);
+                // console.log("label creada "+nuevaLabel);
+                // console.log(nuevaLabel);
+                // console.log("input creado "+nuevoInput);
+                // console.log(nuevoInput);
+               divCajaAnswer.appendChild(nuevaLabel);
+               divCajaAnswer.appendChild(nuevoInput);
+               return divCajaAnswer;
+       
+           }
+       
+       function crearInput(answerOfaQuestion) {
+           let input = document.createElement("input");
+           input.setAttribute("id", answerOfaQuestion);
+           input.setAttribute("type", "radio");
+           input.setAttribute("name", answerOfaQuestion);
+           input.setAttribute("value", answerOfaQuestion);
+       
+       
+           return input;
+       }
+  
+       function crearLabel (answerOfaQuestion){
+           let label =document.createElement("label");
+           label.setAttribute("for" , answerOfaQuestion);
+           label.setAttribute("name", answerOfaQuestion );
+           let texto=document.createTextNode(answerOfaQuestion);
+           label.appendChild(texto);
+       
+      
+       
+       return label;
+       
+       
+       
+       
+       
+       }
+
+//funcion comprobar 
+function  comprueba (answerTrue, answer, arrayDelete, div) {
     if(answerTrue === answer){
-        label.classList.add("success");
+        div.classList.add("success");
         flag++;
-        aciertos++;
+        
         setTimeout(() => deleteQuestion  (arrayDelete), 3000) ;
-        if (flag < quizDogs.lenght){
+        if (flag < quizDogs.length){
             setTimeout(() => imprimir(quizDogs[flag]),3500);
           } else{
-                console.log("Este es tu resultado: " +aciertos+"/"+quizDogs.lenght);
+                console.log("FIN " );
             }
-    }else{
+    }else
+    {
 
-                label.classList.add("fail");
+                div.classList.add("fail");
             }
 
 
 
 
     }
-}
 
-function deleteQuestion (arrayDelete){
+    function deleteQuestion (arrayDelete){
 
-    for(let i=0; i<arrayDelete.lenght; i++){
-
-        arrayDelete[i].remove();
+        for(let i=0; i<arrayDelete.lenght; i++){
+    
+            arrayDelete[i].remove();
+        }
+    
     }
 
-
-}
-   //-----------------------main----------------------
+//------------------main ---------------------------
+       imprimirPregunta (quizDogs[flag]); 
+    
+    //    divCajaAnswer.addEventListener("click",
+    //    ()=>{
+  
+    //       comprueba (quizDogs, answer) 
+  
+    //   });

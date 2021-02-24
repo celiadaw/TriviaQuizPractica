@@ -28,6 +28,10 @@ div{
   width: 100%;
  display:flex;
  flex-direction: column;
+ background-color: rgb(142, 190, 199);
+ font-size: xx-large;
+
+ 
 }
 
 
@@ -268,4 +272,11 @@ h2 {
 .fail {
 
   background-color: rgb(245, 12, 12);
+}
+
+div  p {
+
+font-size: xx-large;
+background-color: rgb(189, 101, 18);
+
 }
