@@ -131,13 +131,22 @@ function imprimir (params) {
    function crearTodasLasRespuestas(pregunta) {
     //    //para crear todas las respuestas de una pregunta
     // crearTitulo(i);
-   for(let j=0; j<pregunta.length;j++){
-      
-       
+    let divAllAnswers = document.createElement("div");
+    divAllAnswers.setAttribute("id", "divAllAnswers");
+   for(let j=0; j<pregunta.answers.length;j++){
+      //pregunta.answers (se recogería asi o hay que poner pregunta[answers])
+       let answerOfaQuestion = pregunta.answers[j];
    // return de [crearTitulo, crearRespuestas]?
    //esto serí a [parrafo, [label, input]];
-        return crearRespuestas(j);
-    }
+   divAllAnswers.appendChild(crearRespuestas(answerOfaQuestion));
+
+
+
+    
+        return divAllAnswers;
+    
+    
+        }
    
    
 }
@@ -156,21 +165,27 @@ function imprimir (params) {
    }
    
    
-   
-   
-   function crearRespuestas(quizDogs[i]) {
-       for(let j =0; j<quizDogs[i].answers.length;j++){
-           let nuevaRespuesta=quizDogs[i].answers[j];
+  
+   function crearRespuestas(answerOfaQuestion) {
+
+       let divCajaAnswer = document.createElement("div");
+
+       divCajaAnswer.setAttribute("id", "divCajaAnswer");
+
+       for(let k =0; k<answerOfaQuestion.answers.length;k++){
+           let nuevaRespuesta=answerOfaQuestion.answers[k];
                
            let nuevaLabel =crearLabel(nuevaRespuesta);
            let nuevoInput = crearInput(nuevaRespuesta);
 
 
-            return [nuevaLabel, nuevoInput];
+            
    
        }
    
-   
+        divCajaAnswer.appendChild(nuevaLabel);
+        divCajaAnswer.appendChild(nuevoInput);
+        return divCajaAnswer;
    
    }
    
