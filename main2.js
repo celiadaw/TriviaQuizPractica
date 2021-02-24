@@ -108,22 +108,34 @@ answerTrue : "pitbull"
    
    const form = document.getElementById("quiz");
 
-function imprimir (params) {
+function imprimir (quizDogs, form) {
+    let crearFieldset = document.createElement("fieldset");
+    crearFieldset.setAttribute("class", "fieldsetStyle");
+    form.appendChild(crearFieldset);
+    imprimirPregunta (createFieldset, quizDogs);
+    //caja
+    
     
 }
 
 
    
-   function imprimirPregunta(quizDogs) {
+   function imprimirPregunta(crearFieldset, quizDogs) {
+    let crearLegend = document.createElement("legend");
+    crearLegend.setAttribute("class", "legentStyle");
+    //titulo esta dentro de legend
+   
+    crearFieldset.appendChild(crearLegend);
+
+
        for (let i=0; i<quizDogs.length;i++){
-           //entro en la pos 1 del array y me encuentro con un objeto
-           let pregunta= quizDogs[i];
-           //le pasamos a crearTitulo la posición que corresponda del primer array 
-           crearTitulo(pregunta);
-           crearTodasLasRespuestas(pregunta);
-           //hay que añadir un appendchild para el form (y quizas mirar 
-           // o más bien crear divs para cada pregunta , respuesta para 
-           //despues colorearla y esto a su vez que sea appendchild del form)
+             let pregunta= quizDogs[i];
+        //tenemos que recorrer un for para recorrer el array y encontrar la info que queremos para titulo y respuestas pero... el appenchild debe estar dentro del for o se debe hacer fuera???       
+        crearLegend.appendChild( crearTitulo(pregunta));
+
+          crearFieldset.appenChild(crearTodasLasRespuestas(pregunta));
+         
+
        }
    
    }
