@@ -84,9 +84,9 @@ const answersQuiz =
 
    
     function comprobar(answer, nameQuiz) {
-        console.log(answersQuiz.inteligentRace + "esta es la respuesta de respuestas");
+        console.log(answersQuiz["inteligentRace"] + "esta es la respuesta de respuestas");
         console.log(nameQuiz);
-        if(answer.value ==answersQuiz[nameQuiz]){
+        if(answer.value ==answersQuiz[`${nameQuiz}`]){
             console.log("en comprobar si son iguales "+answer.value);
            console.log(answersQuiz[nameQuiz]);
          
