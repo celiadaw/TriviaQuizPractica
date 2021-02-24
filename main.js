@@ -52,9 +52,6 @@ const answersQuiz =
     let numberSuccess=0;
 
  let inputAnswer = document.getElementsByTagName('input'); 
-//DUDAS?!?  Recoger el form de html y copiarlo a js?
-// que hacer con el botón de submit? 
-//las preguntas y respuestas de html hay que crearlas en js e impirlas en html?'
 
     for(let i=0; i<inputAnswer.length;i++) {
 
@@ -88,7 +85,7 @@ const answersQuiz =
         console.log(nameQuiz);
         if(answer.value ==answersQuiz[`${nameQuiz}`]){
             console.log("en comprobar si son iguales "+answer.value);
-           console.log(answersQuiz[nameQuiz]);
+           console.log(answersQuiz[`${nameQuiz}`]);
          
            trueAddColor(answer);
 
