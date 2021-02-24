@@ -1,99 +1,22 @@
 
 const quizDogs = [
-{ 
+    { 
 
-title : "¿Cuál es la raza más inteligente?",
-answers: [
+            title : "¿Cuál es la raza más inteligente?",
+            answers: ["Border Collie", "Pastor Alemán", "Dogo Argentino", "Pastor Belga" ],
 
-    {
-        label: "Border  Collie",
-        id: "border-collie",
-        name: "inteligentRace",
-        value: "border-collie"
+            true : 0
 
-    },
-    
-    {
-        label: "Pastor  Alemán",
-        id: "pastor-aleman",
-        name: "inteligentRace",
-        value: "pastor-aleman"
+     },
 
-    },
-    
-    {
-        label: "Dogo Argentino",
-        id: "dogo-argentino",
-        name: "inteligentRace",
-        value: "dogo-argentino"
-
-    },
-    
-    {
-        label: "Pastor Belga",
-        id: "pastor-belga",
-        name: "inteligentRace",
-        value: "pastor-belga"
-
-    }
-
-],
-
-answerTrue : "border-collie"
-
-
-
-},
-
-{ 
+    { 
             
-title : "¿Cuál es la raza más peligrosa?",
-answers: [
-
-    {
-        label: "Presa Canario",
-        id: "presa-canario",
-        name: "dagerousRace",
-        value: "presa-canario"
+        title : "¿Cuál es la raza más peligrosa?",
+        answers: [ "Presa Canario", "Rottweiler", "Pitbull", "American Staffordshire Terrier"     
+                        ],
+        true : 2
 
     },
-    
-    {
-        label: "Rottweiler",
-        id: "rottweiler",
-        name:  "dagerousRace",
-        value:  "rottweiler"
-
-    },
-    
-    {
-        label: "Pitbull",
-        id: "pitbull",
-        name: "dagerousRace",
-        value: "pitbull"
-
-    },
-    
-    {
-        label: "American Staffordshire Terrier",
-        id: "american-staffordshire",
-        name:  "dagerousRace",
-        value: "american-staffordshire"
-
-    }
-
-],
-
-answerTrue : "pitbull"
-
-
-
-},
-
-
-
-
-
 
 
 
@@ -102,65 +25,10 @@ answerTrue : "pitbull"
 
 
 
-
-
-
-   
-   const form = document.getElementById("quiz");
-
-function imprimirTodo (quizDogs, form) {
-    let crearFieldset = document.createElement("fieldset");
-    crearFieldset.setAttribute("class", "fieldsetStyle");
-    form.appendChild(crearFieldset);
-    imprimirPregunta (crearFieldset, quizDogs);
-    //caja
-    
-    
-}
-
-
-   
-   function imprimirPregunta(crearFieldset, quizDogs) {
-    let crearLegend = document.createElement("legend");
-    crearLegend.setAttribute("class", "legentStyle");
-    //titulo esta dentro de legend
-   
-    crearFieldset.appendChild(crearLegend);
-        console.log("legend "+crearLegend);
-        console.log(crearLegend);
-    console.log(crearFieldset)
-
-
-       for (let i=0; i<quizDogs.length;i++){
-             
-            //  console.log("que es pregunta.answers"+pregunta.answers);
-
-            for(let j=0; j<quizDogs[i].answers.length;j++){
-                // let answer = quizDogs[i].answers[j];
-                // let pregunta=quizDogs[i].answers[j];
-               
-                crearFieldset.appenChild(crearTodasLasRespuestas(quizDogs[i].answers[j]));
-
-                }
-
-            }
- 
-        
-        console.log("esto es la variable pregunta dentro del bucle" +pregunta)
-             console.log(quizDogs[1])
-             console.log(i);
-
-        //tenemos que recorrer un for para recorrer el array y encontrar la info que queremos para titulo y respuestas pero... el appenchild debe estar dentro del for o se debe hacer fuera???       
-        crearLegend.appendChild( crearTitulo(pregunta));
-
-          
-         
-
-       }
-   
-   
-      
-   
+const divQuestion =document.querySelector(".question");
+const divAnswers =document.querySelector(".answers");
+let flag= 0;
+let aciertos=0;
 
    function crearTodasLasRespuestas(pregunta) {
   
@@ -185,72 +53,77 @@ function imprimirTodo (quizDogs, form) {
    
    
    
-   
-   //crear titulo ya funciona
-   function crearTitulo(pregunta) {
-   
-   let parrafo= document.createElement("p");
-       let titulo = document.createTextNode(pregunta.title);
-       parrafo.appendChild(titulo);
-   
-       return parrafo;
-   }
-   
-   
-  //esta función la realiza bien
-   function crearRespuesta(answerOfaQuestion) {
 
-       let divCajaAnswer = document.createElement("div");
 
-       divCajaAnswer.setAttribute("id", "divCajaAnswer");
-      //con esta función añadimos a un div llamado CajaAnswer un label con su input correspondiente
-               
-           let nuevaLabel =crearLabel(answerOfaQuestion);
-           let nuevoInput = crearInput(answerOfaQuestion);
-            // console.log("label creada "+nuevaLabel);
-            // console.log(nuevaLabel);
-            // console.log("input creado "+nuevoInput);
-            // console.log(nuevoInput);
-           divCajaAnswer.appendChild(nuevaLabel);
-           divCajaAnswer.appendChild(nuevoInput);
-           return divCajaAnswer;
-   
-       }
-   
+function imprimir (questions){
+ //crear pregunta
+ let arrayDelete= [];
+    let parrafo= document.createElement("p");
+    let textoParrafo = document.createTextNode(questions.title);
+    parrafo.appendChild(textoParrafo);
+     divQuestion.appendChild(parrafo);
+    arrayDelete.push(parrafo);
+   //crear Input
+   let arrayAllAnswers = questions.answers;
+   for (let i = 0; i < arrayAllAnswers.length; i++) {
+      let input = document.createElement("input");
+      input.setAttribute("id", i);
+      input.setAttribute("type", "radio");
+      input.setAttribute("name", i);
+      input.setAttribute("value", i);
+    divAnswers.appendChild(input);
+    arrayDelete.push(input);
+  //Crear label
+    let label =document.createElement("label");
+    label.setAttribute("for" , i );
+ 
+    let textoLabel=document.createTextNode(arrayAllAnswers[i]);
+    label.appendChild(textoLabel);
+    divAnswers.appendChild(label);
+    arrayDelete.push(label);
+    //añadimos un evento!
+    label.addEventListener("click",
+    () => {
+        comprueba (answerTrue, i, label, arrayDelete)
+
+  })
+ 
        
-      
-   
- //crea input bien
-   function crearInput(answerOfaQuestion) {
-       let input = document.createElement("input");
-       input.setAttribute("id", answerOfaQuestion.id);
-       input.setAttribute("type", "radio");
-       input.setAttribute("name", answerOfaQuestion.name);
-       input.setAttribute("value", answerOfaQuestion.value);
-   
-   
-       return input;
    }
-   //crea label bien
-   function crearLabel (answerOfaQuestion){
-       let label =document.createElement("label");
-       label.setAttribute("for" , answerOfaQuestion.id );
-       label.setAttribute("name", answerOfaQuestion.name );
-       let texto=document.createTextNode(answerOfaQuestion.label);
-       label.appendChild(texto);
    
-   
-   
-   return label;
-   
-   
-   
-   
-   
-   }
+
+   imprimir(quizDogs[flag]);
+
+//función para comprobar
+function  comprueba (answerTrue, answer, label, arrayDelete) {
+    if(answerTrue === answer){
+        label.classList.add("success");
+        flag++;
+        aciertos++;
+        setTimeout(() => deleteQuestion  (arrayDelete), 3000) ;
+        if (flag < quizDogs){
+            setTimeout(() => imprimir(quizDogs[flag]),3500);
+          } else{
+                console.log("Este es tu resultado: " +aciertos+"/"+quizDogs.lenght);
+            }
+    }else{
+
+                label.classList.add("fail");
+            }
 
 
 
 
+    }
+}
+
+function deleteQuestion (arrayDelete){
+
+    for(let i=0; i<arrayDelete.lenght; i++){
+
+        arrayDelete[i].remove();
+    }
+
+
+}
    //-----------------------main----------------------
-   imprimirTodo(quizDogs, form);
